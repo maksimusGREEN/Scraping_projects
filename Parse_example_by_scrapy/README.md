@@ -1,5 +1,4 @@
-# parsing_by_scrapy
-Example how I parse data from web
+# parsing_IMDb
 
 В задаче необходимо собрать информацию касательно актёров и фильмов, в которых они снимались. 
 
