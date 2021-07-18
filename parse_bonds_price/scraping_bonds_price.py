@@ -3,6 +3,7 @@ from urllib.request import urlopen, Request
 from datetime import datetime
 import pandas as pd
 import time
+import os
 
 
 # пользовательские переменные
@@ -96,4 +97,9 @@ for ticker in tickers.keys():
     one_stock = pd.read_csv(urlopen(Request(url, headers={'User-Agent': 'Mozilla/5.0'})), sep=',')
     df = pd.concat([df, one_stock])
     time.sleep(2)
-df.to_excel('report_stock_price.xlsx', engine='xlsxwriter')
+
+if os.isfile('report_stock_price.xlsx'):
+    os.remove('report_stock_price.xlsx')
+    df.to_excel('report_stock_price.xlsx', engine='xlsxwriter')
+else:
+    df.to_excel('report_stock_price.xlsx', engine='xlsxwriter')
